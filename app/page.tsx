@@ -8,7 +8,7 @@ export default function OpeningPage() {
   return (
     <main className="h-screen flex flex-col justify-center items-center text-center bg-[#2b1b12] text-white px-6 relative overflow-hidden">
 
-      {/* Ornamen Background */}
+      {/* Ornamen Background */  }
       <div className="absolute inset-0 bg-[url('/batik1.png')] opacity-5" />
 
       <motion.div
