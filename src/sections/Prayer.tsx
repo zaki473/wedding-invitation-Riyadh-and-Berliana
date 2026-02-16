@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function Prayer() {
   return (
-    <section className="py-28 px-6 bg-[#ffffff] text-center relative overflow-hidden">
+    <section className="py-28 px-6 bg-[#fdfbf7] text-center relative overflow-hidden">
 
       {/* Batik Background */}
       <div className="absolute inset-0 bg-[url('/batik-soft.png')] opacity-10" />
@@ -79,7 +79,48 @@ export default function Prayer() {
           QS. Ar-Rum : 21
         </motion.p>
 
-      </motion.div>
+          </motion.div>
+
+    {/* Flower Bottom Left */}
+<motion.img
+  src="/bunga.png"
+  alt="bunga Left"
+  initial={{ opacity: 0, y: 120 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1.4 }}
+  viewport={{ once: true }}
+  className="
+    absolute
+    bottom-0
+    left-0
+    w-[45%]
+    md:w-[30%]
+    pointer-events-none
+    select-none
+  "
+/>
+
+{/* Flower Bottom Right */}
+<motion.img
+  src="/bunga.png"
+  alt="bunga Right"
+  initial={{ opacity: 0, y: 120 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1.4, delay: 0.2 }}
+  viewport={{ once: true }}
+  className="
+    absolute
+    bottom-0
+    right-0
+    w-[45%]
+    md:w-[30%]
+    scale-x-[-1]
+    pointer-events-none
+    select-none
+  "
+/>
+
+
     </section>
   )
 }

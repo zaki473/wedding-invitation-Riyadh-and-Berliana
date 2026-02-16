@@ -1,3 +1,4 @@
+import MusicPlayer from "@/src/sections/MusicPlayer"
 import Hero from "@/src/sections/Hero"
 import Prayer from "@/src/sections/Prayer"
 import Couple from "@/src/sections/Couple"
@@ -9,9 +10,7 @@ import Footer from "@/src/sections/Footer"
 export default function Home() {
   return (
     <main>
-        <audio autoPlay loop>
-        <source src="/music.mp3" type="audio/mp3" />
-        </audio>
+      <MusicPlayer />
 
       <Hero />
       <Prayer />

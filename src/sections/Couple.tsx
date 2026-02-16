@@ -4,91 +4,142 @@ import { motion } from 'framer-motion'
 
 export default function Couple() {
   return (
-    <section className="py-28 bg-[#f9f4ec] text-center px-6 relative overflow-hidden">
+    <section className="py-20 bg-[#fdfbf7] text-center px-4 relative overflow-hidden">
+      
+      {/* 1. BACKGROUND TEXTURE - Batik Soft */}
+      <div className="absolute inset-0 bg-[url('/batik-soft.png')] opacity-[0.05] pointer-events-none" />
+      
+      {/* 2. WAYANG DECORATION - Mobile Optimized */}
+      {/* Rama - Kiri */}
+      <motion.img
+        src="/rama.png"
+        alt="Rama"
+        initial={{ opacity: 0, x: -100, rotate: -10 }}
+        whileInView={{ opacity: 0.8, x: -20, rotate: 0 }}
+        transition={{ duration: 1.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="
+          absolute 
+          -left-10 top-20 
+          w-[150px] sm:w-[250px] md:w-[400px] lg:w-[500px] 
+          object-contain 
+          z-0 
+          grayscale-[20%] brightness-90
+        "
+      />
 
-      {/* Batik Ornament */}
-      <div className="absolute inset-0 bg-[url('/batik-soft.png')] opacity-10" />
+      {/* Sinta - Kanan */}
+      <motion.img
+        src="/sinta.png"
+        alt="Sinta"
+        initial={{ opacity: 0, x: 100, rotate: 10 }}
+        whileInView={{ opacity: 0.8, x: 20, rotate: 0 }}
+        transition={{ duration: 1.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="
+          absolute 
+          -right-10 top-20 
+          w-[150px] sm:w-[250px] md:w-[400px] lg:w-[500px] 
+          object-contain 
+          z-0 
+          grayscale-[20%] brightness-90
+        "
+      />
 
-      <div className="relative max-w-5xl mx-auto">
-
-        {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+      {/* 3. CONTENT AREA */}
+      <div className="relative z-10 max-w-4xl mx-auto">
+        
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-serif text-[#3b2a1f]"
+          className="mb-16"
         >
-          Pengantin
-        </motion.h2>
-
-        {/* Divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="w-28 h-[2px] bg-[#c5a880] mx-auto my-6 origin-center rounded-full"
-        />
+          <span className="text-[#b68d40] tracking-[0.3em] text-xs uppercase font-medium mb-3 block">
+            The Wedding of
+          </span>
+          <h2 className="text-5xl md:text-6xl font-serif text-[#3d2b1f] italic">
+            Pengantin
+          </h2>
+          <div className="flex justify-center items-center mt-6 gap-4">
+            <div className="h-[1px] w-12 bg-[#b68d40]/40" />
+            <div className="w-2 h-2 rotate-45 border border-[#b68d40]" />
+            <div className="h-[1px] w-12 bg-[#b68d40]/40" />
+          </div>
+        </motion.div>
 
         {/* Couple Cards */}
-        <div className="mt-16 grid md:grid-cols-2 gap-12">
-
-          {/* Groom */}
+        <div className="space-y-12 md:space-y-0 md:flex md:gap-8 items-center justify-center">
+          
+          {/* Groom Card */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="bg-white border border-[#c5a880] rounded-3xl shadow-xl p-10 relative"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex-1 group"
           >
-            <p className="uppercase tracking-widest text-sm text-[#7a5c3c]">
-              Mempelai Pria
-            </p>
-
-            <h3 className="mt-4 text-3xl font-serif text-[#3b2a1f]">
-              Muhammad Riyadh
-            </h3>
-
-            <p className="mt-4 text-[#6a4b32] italic">
-              Putra dari
-            </p>
-
-            <p className="mt-2 text-gray-700">
-              Bapak .... <br /> Ibu ....
-            </p>
-
-            {/* Decorative Glow */}
-            <div className="absolute inset-0 rounded-3xl ring-1 ring-[#c5a880]/30 pointer-events-none" />
+            <div className="bg-white/60 backdrop-blur-sm border border-[#e5d5bc] p-8 rounded-t-[100px] rounded-b-3xl shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+              <p className="font-serif text-[#b68d40] text-lg mb-4 italic">Mempelai Pria</p>
+              <h3 className="text-3xl font-serif text-[#3d2b1f] mb-6">
+                Muhammad Riyadh
+              </h3>
+              <div className="text-sm text-[#7a5c3c] leading-relaxed">
+                <p className="italic mb-1">Putra dari</p>
+                <p className="font-semibold text-gray-800 uppercase tracking-tight">
+                  Bapak Suparyono & <br /> Ibu Nurlindah
+                </p>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Bride */}
+          {/* Ampersand Divider (Hidden on mobile if too crowded, or elegant text) */}
+          <div className="hidden md:block text-4xl font-serif text-[#b68d40] italic">
+            &
+          </div>
+
+          {/* Bride Card */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="bg-white border border-[#c5a880] rounded-3xl shadow-xl p-10 relative"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex-1 group"
           >
-            <p className="uppercase tracking-widest text-sm text-[#7a5c3c]">
-              Mempelai Wanita
-            </p>
-
-            <h3 className="mt-4 text-3xl font-serif text-[#3b2a1f]">
-              Berliana Radini Isnindiafi
-            </h3>
-
-            <p className="mt-4 text-[#6a4b32] italic">
-              Putri dari
-            </p>
-
-            <p className="mt-2 text-gray-700">
-              Bapak .... <br /> Ibu ....
-            </p>
-
-            <div className="absolute inset-0 rounded-3xl ring-1 ring-[#c5a880]/30 pointer-events-none" />
+            <div className="bg-white/60 backdrop-blur-sm border border-[#e5d5bc] p-8 rounded-t-[100px] rounded-b-3xl shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+              <p className="font-serif text-[#b68d40] text-lg mb-4 italic">Mempelai Wanita</p>
+              <h3 className="text-3xl font-serif text-[#3d2b1f] mb-6">
+                Berliana Radini Isnindiafi
+              </h3>
+              <div className="text-sm text-[#7a5c3c] leading-relaxed">
+                <p className="italic mb-1">Putri dari</p>
+                <p className="font-semibold text-gray-800 uppercase tracking-tight">
+                  Bapak Manfa Ludfi & <br /> Ibu Wiwit Ariana
+                </p>
+              </div>
+            </div>
           </motion.div>
 
         </div>
+
+        {/* Footer Decoration */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1.5 }}
+          className="mt-20 flex flex-col items-center"
+        >
+          <p className="text-[#7a5c3c] font-serif italic text-sm max-w-xs leading-relaxed opacity-80">
+            "Sakinah Mawaddah Warahmah"
+          </p>
+        </motion.div>
+
+      </div>
+
+      {/* Ornament Bottom */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-xs opacity-20 pointer-events-none">
+          <svg viewBox="0 0 100 20" className="fill-[#b68d40]">
+             {/* Simple flourish ornament could go here */}
+          </svg>
       </div>
     </section>
   )
