@@ -108,7 +108,7 @@ export default function Couple() {
             <div className="bg-white/60 backdrop-blur-sm border border-[#e5d5bc] p-8 rounded-t-[100px] rounded-b-3xl shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
               <p className="font-serif text-[#b68d40] text-lg mb-4 italic">Mempelai Wanita</p>
               <h3 className="text-3xl font-serif text-[#3d2b1f] mb-6">
-                Berliana Radini Isnindiafi
+                Berliana Radhini Isnindiafi
               </h3>
               <div className="text-sm text-[#7a5c3c] leading-relaxed">
                 <p className="italic mb-1">Putri dari</p>

@@ -80,7 +80,7 @@ export default function Event() {
             Save The Date
           </span>
           <h2 className="text-4xl md:text-6xl font-serif text-[#3d2b1f] italic">
-            Rangkaian Acara
+            Rangkaian <p>Acara</p>
           </h2>
           <div className="flex justify-center items-center mt-6 gap-3">
             <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#b68d40]/50" />

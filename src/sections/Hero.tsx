@@ -14,7 +14,7 @@ export default function Hero() {
       playsInline
       className="w-full h-full object-cover"
     >
-      <source src="/last.mp4" type="video/mp4" />
+      <source src="/video.mp4" type="video/mp4" />
     </video>
 
     {/* Overlay optional */}

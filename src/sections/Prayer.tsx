@@ -93,7 +93,7 @@ export default function Prayer() {
     absolute
     bottom-0
     left-0
-    w-[45%]
+    w-[40%]
     md:w-[30%]
     pointer-events-none
     select-none
@@ -112,7 +112,7 @@ export default function Prayer() {
     absolute
     bottom-0
     right-0
-    w-[45%]
+    w-[40%]
     md:w-[30%]
     scale-x-[-1]
     pointer-events-none
