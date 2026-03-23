@@ -6,7 +6,9 @@ import Event from "@/src/sections/Event"
 import Countdown from "@/src/sections/Countdown"
 import RSVP from "@/src/sections/RSVP"
 import Footer from "@/src/sections/Footer"
-
+import Kolase from "@/src/sections/Kolase"
+import Gift from "@/src/sections/Gift"
+import Thankyou from "@/src/sections/Thankyou"
 export default function Home() {
   return (
     <main>
@@ -17,7 +19,10 @@ export default function Home() {
       <Couple />
       <Event />
       <Countdown />
-      {/* <RSVP /> */}
+      <Kolase/>
+      <Gift/>
+      <RSVP />
+      <Thankyou />
       <Footer />
     </main>
   )
