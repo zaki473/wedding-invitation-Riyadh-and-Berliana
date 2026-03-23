@@ -1,4 +1,5 @@
 "use client"
+import { Suspense } from "react" // Tambahkan ini
 import { useRouter, useSearchParams } from "next/navigation"
 import { motion, Variants } from "framer-motion"
 
@@ -19,12 +20,20 @@ const itemVariants: Variants = {
   }
 }
 
+// 1. Buat komponen terpisah untuk mengambil Nama Tamu
+function GuestName() {
+  const searchParams = useSearchParams()
+  const namaTamu = searchParams.get("to") || "Tamu Undangan"
+  
+  return (
+    <h2 className="text-1xl md:text-3xl text-[#f5e6cc] font-[family-name:var(--font-playfair)] bold">
+      {namaTamu}
+    </h2>
+  )
+}
+
 export default function OpeningPage() {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  
-  // Ambil nama dari URL ?to=Nama+Tamu
-  const namaTamu = searchParams.get("to") || "Tamu Undangan"
 
   return (
     <main className="relative h-[100dvh] w-full flex flex-col justify-between items-center overflow-hidden py-12 md:py-20 bg-[#0a0a0a]">
@@ -52,7 +61,6 @@ export default function OpeningPage() {
         </p>
       </motion.div>
 
-      {/* SPACE KOSONG UNTUK FOTO/SILUET */}
       <div className="flex-grow" />
 
       {/* KONTEN UTAMA BAWAH */}
@@ -85,11 +93,12 @@ export default function OpeningPage() {
           <span className="text-[10px] uppercase tracking-[0.3em] text-[#d6b98c]/70 mb-2 font-light">
             Kepada Yth. Bapak/Ibu/Saudara/i
           </span>
-          {/* Box halus untuk nama tamu agar kontras */}
+          
           <div className="px-6 py-2 border-x border-[#d6b98c]/20">
-             <h2 className="text-1xl md:text-3xl text-[#f5e6cc] font-[family-name:var(--font-playfair)] bold">
-               {namaTamu}
-             </h2>
+             {/* 2. Bungkus dengan Suspense di sini */}
+             <Suspense fallback={<p className="text-[#f5e6cc]">Memuat Nama...</p>}>
+                <GuestName />
+             </Suspense>
           </div>
         </motion.div>
 
