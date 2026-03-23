@@ -45,7 +45,7 @@ export default function OpeningPage() {
           initial={{ scale: 1.15 }}
           animate={{ scale: 1 }}
           transition={{ duration: 12, ease: "easeOut" }}
-          className="w-full h-full bg-[url('/depan.jpg')] bg-center bg-cover bg-no-repeat opacity-70"
+          className="w-full h-full bg-[url('/depan.webp')] bg-center bg-cover bg-no-repeat opacity-70"
         />
       </div>
 

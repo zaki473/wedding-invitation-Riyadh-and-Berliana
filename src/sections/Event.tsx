@@ -34,7 +34,7 @@ export default function Event() {
 
       {/* DAUN KIRI */}
       <motion.img
-        src="/ivy.png"
+        src="/ivy.webp"
         alt="Flower Left"
         style={{ y: moveDown, rotate: rotateLeft, scaleX: -1 }}
         initial={{ y: -200, opacity: 0 }}
@@ -46,7 +46,7 @@ export default function Event() {
 
       {/* DAUN KANAN */}
       <motion.img
-        src="/ivy.png"
+        src="/ivy.webp"
         alt="Flower Right"
         style={{ y: moveDown, rotate: rotateRight }}
         initial={{ y: -200, opacity: 0 }}

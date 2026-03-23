@@ -13,7 +13,7 @@ export default function Couple() {
       
       {/* 2. WAYANG DECORATION */}
       <motion.img
-        src="/rama.png"
+        src="/rama.webp"
         alt="Rama"
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 0.4, x: -20 }}
@@ -22,7 +22,7 @@ export default function Couple() {
       />
 
       <motion.img
-        src="/sinta.png"
+        src="/sinta.webp"
         alt="Sinta"
         initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 0.4, x: 20 }}
@@ -63,7 +63,7 @@ export default function Couple() {
               {/* Image Frame - Arch Shape */}
               <div className="relative w-full aspect-[4/5] mb-8 overflow-hidden rounded-t-[120px] rounded-b-2xl border-4 border-[#fdfbf7] shadow-lg">
                 <img 
-                  src="/pria.jpg" // Ganti dengan path foto pengantin pria
+                  src="/pria.webp" // Ganti dengan path foto pengantin pria
                   alt="Groom" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
@@ -103,7 +103,7 @@ export default function Couple() {
               {/* Image Frame - Arch Shape */}
               <div className="relative w-full aspect-[4/5] mb-8 overflow-hidden rounded-t-[120px] rounded-b-2xl border-4 border-[#fdfbf7] shadow-lg">
                 <img 
-                  src="/wanita.jpg" // Ganti dengan path foto pengantin wanita
+                  src="/wanita.webp" // Ganti dengan path foto pengantin wanita
                   alt="Bride" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />

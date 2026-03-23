@@ -49,7 +49,7 @@ const Kolase: React.FC = () => {
             className="w-full h-52 md:h-[400px] overflow-hidden rounded-2xl md:rounded-[32px] shadow-lg"
           >
             <img 
-              src="/kolase-top.jpg" 
+              src="/kolase-top.webp" 
               alt="Top" 
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               // MENGGESER KE ATAS: Ubah 'center' (50%) menjadi 30% atau 35%
@@ -66,7 +66,7 @@ const Kolase: React.FC = () => {
                className="w-full h-64 md:h-[500px] overflow-hidden rounded-2xl md:rounded-[32px] shadow-lg"
             >
               <img 
-                src="/kolase-kiri.jpg" 
+                src="/kolase-kiri.webp" 
                 alt="Moment 1"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 // Contoh jika ingin geser atas sedikit di foto kiri juga:
@@ -81,7 +81,7 @@ const Kolase: React.FC = () => {
                className="w-full h-64 md:h-[500px] overflow-hidden rounded-2xl md:rounded-[32px] shadow-lg"
             >
               <img 
-                src="/kolase-kanan.jpg" 
+                src="/kolase-kanan.webp" 
                 alt="Moment 2"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 style={{ objectPosition: "center 40%" }}
@@ -96,7 +96,7 @@ const Kolase: React.FC = () => {
             className="w-full h-52 md:h-[400px] overflow-hidden rounded-2xl md:rounded-[32px] shadow-lg"
           >
             <img 
-              src="/kolase-bottom.jpg" 
+              src="/kolase-bottom.webp" 
               alt="Moment Bottom" 
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
               style={{ objectPosition: "center 40%" }}
