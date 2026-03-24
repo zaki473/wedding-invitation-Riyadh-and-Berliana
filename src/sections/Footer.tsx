@@ -23,6 +23,7 @@ export default function Footer() {
 
         {/* Copyright Section */}
         <div className="flex flex-col items-center gap-1">
+          <p className="text-[9px] uppercase tracking-[0.3em] opacity-40 mb-2">Created with love</p>
           <p className="text-[10px] md:text-xs tracking-[0.4em] uppercase opacity-40 font-light">
             By ©myshakiii
           </p>

@@ -86,7 +86,6 @@ export default function ThankYou() {
         transition={{ delay: 1, duration: 2 }}
         className="absolute bottom-10 flex flex-col items-center"
       >
-        <p className="text-[9px] uppercase tracking-[0.3em] opacity-40 mb-2">Created with love</p>
         <div className="h-16 w-[1px] bg-gradient-to-b from-[#b68d40] to-transparent opacity-30" />
       </motion.div>
 

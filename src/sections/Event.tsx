@@ -67,7 +67,7 @@ export default function Event() {
             Save The Date
           </span>
           <h2 className="text-4xl md:text-6xl text-[#3d2b1f] font-[family-name:var(--font-playfair)] italic">
-            Rangkaian Acara
+            Rangkaian <br />Acara
           </h2>
           <div className="flex justify-center items-center mt-8 gap-4">
             <div className="h-[0.5px] w-16 bg-gradient-to-r from-transparent to-[#b68d40]" />
@@ -93,7 +93,7 @@ export default function Event() {
             number="2"
             title="Resepsi"
             date="Senin, 01 Juni 2026"
-            time="11.00 WIB – Selesai"
+            time="10.30 WIB – 13.00 WIB"
             location="Gedung VEDC Malang - Aula serbaguna"
             address="Jl. Teluk Mandar, Arjosari, Malang"
             mapsUrl={mapsUrl}

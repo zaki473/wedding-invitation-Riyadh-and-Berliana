@@ -1,10 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function Hero() {
-  const [mobileLoaded, setMobileLoaded] = useState(false)
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
   // Animasi Masuk Halus untuk Desktop
   const containerVariants = {
@@ -27,61 +27,82 @@ export default function Hero() {
 
   return (
     <section className="h-screen w-full relative overflow-hidden bg-[#fdfbf7]">
-      {/* Import Font Latin & Serif Mewah */}
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
         .font-latin { font-family: 'Great Vibes', cursive; }
         .font-luxury { font-family: 'Playfair Display', serif; }
       `}</style>
 
-      {/* ================= MOBILE: PURE VIDEO ================= */}
-      <div className="absolute inset-0 md:hidden">
-        {/* Background Video */}
+      {/* ================= MOBILE: VIDEO AREA ================= */}
+      <div className="absolute inset-0 md:hidden bg-[#fdfbf7]">
+        
+        {/* 1. ANIMASI LOADING (Hanya muncul saat video belum ready) */}
+        <AnimatePresence>
+          {!isVideoLoaded && (
+            <motion.div 
+              key="loader"
+              exit={{ opacity: 0, transition: { duration: 1 } }}
+              className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-[#fdfbf7]"
+            >
+              {/* Ring Loading Mewah */}
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                className="w-12 h-12 border-2 border-[#b68d40]/20 border-t-[#800000] rounded-full"
+              />
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="mt-4 font-luxury text-[10px] tracking-[0.3em] text-[#b68d40] uppercase"
+              >
+                Menyiapkan Kebahagiaan...
+              </motion.p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* 2. VIDEO BACKGROUND */}
         <div className="absolute inset-0 z-0">
-          {/* Poster Image (Thumbnail sebelum video jalan) */}
-          <motion.img
-            src="/couple.png"
-            alt="poster"
-            className="absolute inset-0 w-full h-full object-cover"
-            animate={{ opacity: mobileLoaded ? 0 : 1 }}
-            transition={{ duration: 1 }}
-          />
-          {/* Video Mobile - Tanpa Overlay Gelap agar Pure */}
           <motion.video
-            autoPlay muted loop playsInline preload="metadata"
-            onLoadedData={() => setMobileLoaded(true)}
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            preload="auto"
+            onLoadedData={() => setIsVideoLoaded(true)} // Trigger saat video siap
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isVideoLoaded ? 1 : 0 }}
+            transition={{ duration: 1.5 }}
             className="w-full h-full object-cover"
           >
             <source src="/video.mp4" type="video/mp4" />
           </motion.video>
         </div>
 
-        {/* Indikator Scroll Halus di Mobile agar tamu tahu bisa di-scroll */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
-        >
+        {/* Indikator Scroll (Hanya muncul setelah video loaded) */}
+        {isVideoLoaded && (
           <motion.div 
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="w-[1px] h-10 bg-white shadow-lg"
-          />
-        </motion.div>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+          >
+            <motion.div 
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className="w-[1px] h-10 bg-white shadow-lg"
+            />
+          </motion.div>
+        )}
       </div>
 
 
       {/* ================= DESKTOP (WEB): TYPOGRAPHY ONLY ================= */}
       <div className="hidden md:flex w-full h-full items-center justify-center relative bg-[#fdfbf7]">
-        
-        {/* Background Texture (Batik Halus) */}
         <div className="absolute inset-0 bg-[url('/batik-soft.png')] opacity-[0.03] pointer-events-none" />
-        
-        {/* Ornamen Garis Mewah di Tepi Layar */}
         <div className="absolute inset-10 border border-[#b68d40]/10 pointer-events-none" />
 
-        {/* Konten Web (Kata-kata Eksklusif) */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -112,7 +133,6 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll Indicator Desktop */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -127,7 +147,6 @@ export default function Hero() {
           />
         </motion.div>
       </div>
-
     </section>
   )
 }
