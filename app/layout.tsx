@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display, Great_Vibes } from "next/font/google"; // Tambahkan Playfair dan Great Vibes
-import "./globals.css";
+import { Geist, Geist_Mono, Playfair_Display, Great_Vibes } from "next/font/google";
+import "@/app/globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

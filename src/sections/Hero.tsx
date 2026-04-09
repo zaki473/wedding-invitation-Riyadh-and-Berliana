@@ -76,7 +76,7 @@ export default function Hero() {
             transition={{ duration: 1.5 }}
             className="w-full h-full object-cover"
           >
-            <source src="/video.mp4" type="video/mp4" />
+            <source src="/video_final.mp4" type="video/mp4" />
           </motion.video>
         </div>
 

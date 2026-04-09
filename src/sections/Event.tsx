@@ -82,7 +82,7 @@ export default function Event() {
             title="Akad Nikah"
             date="Senin, 01 Juni 2026"
             time="07.00 – 09.00 WIB"
-            note="(Hanya untuk keluarga inti)"
+            // note="(Hanya untuk keluarga inti)"
             location="Gedung VEDC Malang - Aula serbaguna"
             address="Jl. Teluk Mandar, Arjosari, Malang"
             mapsUrl={mapsUrl}

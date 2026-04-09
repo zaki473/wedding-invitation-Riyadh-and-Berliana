@@ -51,9 +51,17 @@ const Kolase: React.FC = () => {
             <img 
               src="/kolase-top.webp" 
               alt="Top" 
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              // MENGGESER KE ATAS: Ubah 'center' (50%) menjadi 30% atau 35%
-              style={{ objectPosition: "30% 40%" }} 
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 select-none"
+              onContextMenu={(e) => e.preventDefault()} // Mencegah Klik Kanan (Save Image)
+              draggable={false} // Mencegah Drag Image
+              /* 
+                PANDUAN GESER GAMBAR KANAN KIRI:
+                objectPosition: "X% Y%"
+                - X% (Angka Pertama) = Kiri-Kanan. 0% (Kiri mentok), 50% (Tengah), 100% (Kanan mentok).
+                - Y% (Angka Kedua)   = Atas-Bawah.
+                Contoh di bawah ini geser sedikit ke Kanan (70%).
+              */
+              style={{ objectPosition: "70% 40%" }} 
             />
           </motion.div>
 
@@ -66,11 +74,12 @@ const Kolase: React.FC = () => {
                className="w-full h-64 md:h-[500px] overflow-hidden rounded-2xl md:rounded-[32px] shadow-lg"
             >
               <img 
-                src="/kolase-kiri.webp" 
+                src="/kolase-kiri.jpg" 
                 alt="Moment 1"
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                // Contoh jika ingin geser atas sedikit di foto kiri juga:
-                style={{ objectPosition: "8% 40%" }} 
+                // Tambahkan object-center, hapus style inline
+                className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105 select-none"
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
               />
             </motion.div>
 
@@ -83,8 +92,11 @@ const Kolase: React.FC = () => {
               <img 
                 src="/kolase-kanan.webp" 
                 alt="Moment 2"
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                style={{ objectPosition: "center 40%" }}
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 select-none"
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
+                // Contoh ini posisi X ditengah (50%), posisi Y di atas (20%)
+                style={{ objectPosition: "50% 20%" }}
               />
             </motion.div>
           </div>
@@ -98,8 +110,11 @@ const Kolase: React.FC = () => {
             <img 
               src="/kolase-bottom.webp" 
               alt="Moment Bottom" 
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-              style={{ objectPosition: "center 40%" }}
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 select-none"
+              onContextMenu={(e) => e.preventDefault()}
+              draggable={false}
+              // Geser Kanan-Kiri normal (50%), Atas-bawah di 40%
+              style={{ objectPosition: "50% 40%" }}
             />
           </motion.div>
 

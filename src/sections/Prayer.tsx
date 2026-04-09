@@ -74,7 +74,7 @@ export default function Prayer() {
 
       {/* FLOWER RIGHT */}
       <motion.img
-        src="/bunga.png"
+        src="/bunga.webp"
         alt="bunga kanan"
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}

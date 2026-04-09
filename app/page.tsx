@@ -44,7 +44,7 @@ export default function OpeningPage() {
           initial={{ scale: 1.15 }}
           animate={{ scale: 1 }}
           transition={{ duration: 12, ease: "easeOut" }}
-          className="w-full h-full bg-[url('/depan.webp')] bg-center bg-cover bg-no-repeat opacity-70"
+          className="w-full h-full bg-[url('/depanbiru.jpeg')] bg-center bg-cover bg-no-repeat opacity-70"
         />
       </div>
 
@@ -84,7 +84,7 @@ export default function OpeningPage() {
         {/* NAMA MEMPELAI (Mobile tetap text-3xl, Desktop md:text-[9rem]) */}
         <motion.div variants={itemVariants} className="mb-6 md:mb-14">
           <h1 className="text-3xl md:text-[9rem] text-[#f5e6cc] font-[family-name:var(--font-playfair)] italic tracking-tight leading-none">
-            Riyadh & Berliana
+            Berliana & Riyadh
           </h1>
         </motion.div>
 
