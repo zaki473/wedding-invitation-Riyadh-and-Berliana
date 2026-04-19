@@ -63,9 +63,10 @@ const WeddingGift: React.FC = () => {
         <motion.div {...animProps} style={styles.mainGrid}>
           <Gift size={36} color="#b68d40" style={{ marginBottom: '15px' }} />
           <h2 style={styles.title}>Wedding Gift</h2>
-          <p style={styles.subtitle}>
-            
-Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless dan kami akan senang hati menerimanya dan tentu semakin melengkapi kebahagiaan kami
+          <p style={styles.subtitle}>  
+            Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah 
+            ungkapan tanda kasih Anda, Anda dapat memberi hadiah dan kami akan senang hati menerimanya 
+            dan tentu semakin melengkapi kebahagiaan kami
           </p>
 
           {/* TOMBOL UNTUK MEMUNCULKAN POP-UP */}

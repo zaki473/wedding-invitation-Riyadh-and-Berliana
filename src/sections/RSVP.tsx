@@ -23,21 +23,19 @@ export default function RSVP() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // GANTI DENGAN URL DEPLOYMENT GOOGLE APPS SCRIPT TERBARU ANDA
+  // --- LOGIK PAGINATION ---
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Jumlah pesan per halaman
+
   const scriptURL = "https://script.google.com/macros/s/AKfycbxgiDLpoZv4BImkUTJ7bsdZbiZx0DkFclbVOB3N-FZU8ZVKm0KRS8kzbYXk5iW-pA8S/exec";
 
   const fetchMessages = async () => {
     try {
       setIsLoading(true);
-      // Tambahkan timestamp (?t=...) agar data selalu fresh (tidak kena cache browser)
       const response = await fetch(`${scriptURL}?t=${Date.now()}`); 
-
       if (!response.ok) throw new Error('Gagal fetch');
-
       const data = await response.json();
-      // Reverse agar yang terbaru di atas
       setMessages(Array.isArray(data) ? [...data].reverse() : []);
-      
     } catch (error) {
       console.error("Gagal mengambil data:", error);
     } finally {
@@ -49,6 +47,19 @@ export default function RSVP() {
     fetchMessages();
   }, []);
 
+  // Hitung data yang tampil
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentMessages = messages.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(messages.length / itemsPerPage);
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    // Scroll otomatis ke awal daftar ucapan saat ganti halaman
+    const element = document.getElementById("ucapan-list");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -56,7 +67,6 @@ export default function RSVP() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
       await fetch(scriptURL, {
         method: 'POST',
@@ -64,15 +74,9 @@ export default function RSVP() {
         headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(formData),
       });
-
       setIsSuccess(true);
       setFormData({ nama: "", jumlah: "1", status: "Hadir", pesan: "" });
-      
-      // Beri jeda 2 detik agar Google Sheet selesai sinkronisasi sebelum fetch ulang
-      setTimeout(() => {
-        fetchMessages();
-      }, 2000);
-
+      setTimeout(() => { fetchMessages(); }, 2000);
     } catch (error) {
       console.error("Error:", error);
       alert("Terjadi kesalahan teknis.");
@@ -91,11 +95,11 @@ export default function RSVP() {
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5d5bc; border-radius: 10px; }
       `}</style>
 
-      {/* Jika batik-soft.png masih error 404, pastikan filenya ada di folder /public atau hapus baris ini */}
       <div className="absolute inset-0 bg-[url('/batik-soft.png')] opacity-5 pointer-events-none" />
 
       <div className="relative z-10 max-w-2xl mx-auto px-6">
         
+        {/* FORM RSVP */}
         <div className="text-center mb-12">
           <span className="block uppercase tracking-[0.4em] text-[10px] md:text-xs text-[#b68d40] font-semibold mb-2">Reservation</span>
           <h2 className="font-latin text-5xl md:text-7xl text-[#800000]">Konfirmasi Kehadiran</h2>
@@ -104,10 +108,7 @@ export default function RSVP() {
         <div className="bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-[40px] border border-[#e5d5bc] shadow-xl relative mb-16">
           <AnimatePresence mode="wait">
             {isSuccess ? (
-              <motion.div 
-                key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-10"
-              >
+              <motion.div key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10">
                 <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✓</div>
                 <h3 className="text-xl font-serif text-[#3d2b1f] mb-2">Terima Kasih!</h3>
                 <p className="text-sm text-[#7a5c3c]">Konfirmasi Anda telah kami terima.</p>
@@ -146,30 +147,77 @@ export default function RSVP() {
           </AnimatePresence>
         </div>
 
-        <div className="space-y-6">
+        {/* DAFTAR UCAPAN */}
+        <div className="space-y-6" id="ucapan-list">
           <div className="flex items-center gap-4">
             <div className="h-[1px] flex-1 bg-[#e5d5bc]"></div>
-            <h3 className="text-[#b68d40] font-bold uppercase tracking-widest text-[10px] md:text-xs text-center">Ucapan Doa Restu</h3>
+            <h3 className="text-[#b68d40] font-bold uppercase tracking-widest text-[10px] md:text-xs text-center">Ucapan Doa Restu ({messages.length})</h3>
             <div className="h-[1px] flex-1 bg-[#e5d5bc]"></div>
           </div>
 
-          <div className="max-h-[600px] overflow-y-auto custom-scrollbar pr-2 space-y-4">
+          <div className="space-y-4">
             {isLoading ? (
               <div className="text-center py-10 text-[#b68d40] animate-pulse text-sm">Memuat pesan...</div>
             ) : messages.length === 0 ? (
               <div className="text-center py-10 text-gray-400 italic text-sm">Belum ada pesan dari tamu.</div>
             ) : (
-              messages.map((item, idx) => (
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} key={idx} className="bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-[#e5d5bc] shadow-sm">
-                  <div className="flex justify-between items-start mb-3">
-                    <span className="font-bold text-[#3d2b1f] text-sm md:text-base capitalize">{item.nama}</span>
-                    <span className={`text-[9px] font-bold uppercase tracking-tighter px-2 py-1 rounded-md ${item.status === 'Hadir' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
-                      {item.status === 'Hadir' ? '✓ Hadir' : '× Absen'}
-                    </span>
+              <>
+                <AnimatePresence mode="popLayout">
+                  {currentMessages.map((item, idx) => (
+                    <motion.div 
+                      layout
+                      initial={{ opacity: 0, y: 10 }} 
+                      animate={{ opacity: 1, y: 0 }} 
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      key={`${currentPage}-${idx}`} 
+                      className="bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-[#e5d5bc] shadow-sm"
+                    >
+                      <div className="flex justify-between items-start mb-3">
+                        <span className="font-bold text-[#3d2b1f] text-sm md:text-base capitalize">{item.nama}</span>
+                        <span className={`text-[9px] font-bold uppercase tracking-tighter px-2 py-1 rounded-md ${item.status === 'Hadir' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+                          {item.status === 'Hadir' ? '✓ Hadir' : '× Absen'}
+                        </span>
+                      </div>
+                      <p className="text-[#7a5c3c] text-sm leading-relaxed italic">"{item.pesan}"</p>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+
+                {/* --- TAB PAGINATION (1 2 3) --- */}
+                {totalPages > 1 && (
+                  <div className="flex justify-center items-center gap-2 mt-8 py-4">
+                    <button 
+                      onClick={() => paginate(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      className="p-2 text-[#b68d40] disabled:opacity-30"
+                    >
+                      &lt;
+                    </button>
+                    
+                    {[...Array(totalPages)].map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => paginate(i + 1)}
+                        className={`w-8 h-8 rounded-full text-xs font-bold transition-all ${
+                          currentPage === i + 1 
+                          ? 'bg-[#800000] text-white shadow-md' 
+                          : 'bg-white text-[#b68d40] border border-[#e5d5bc] hover:border-[#b68d40]'
+                        }`}
+                      >
+                        {i + 1}
+                      </button>
+                    ))}
+
+                    <button 
+                      onClick={() => paginate(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                      className="p-2 text-[#b68d40] disabled:opacity-30"
+                    >
+                      &gt;
+                    </button>
                   </div>
-                  <p className="text-[#7a5c3c] text-sm leading-relaxed italic">"{item.pesan}"</p>
-                </motion.div>
-              ))
+                )}
+              </>
             )}
           </div>
         </div>

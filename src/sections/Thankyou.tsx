@@ -70,7 +70,7 @@ export default function ThankYou() {
             style={{ fontFamily: "'Great Vibes', cursive" }}
             className="text-4xl md:text-5xl text-[#f5e6cc]"
           >
-            Riyadh & Berliana
+            Berliana & Riyadh
           </h3>
           <p className="text-[10px] md:text-xs tracking-[0.5em] uppercase opacity-50 mt-4">
             Beserta Keluarga Besar

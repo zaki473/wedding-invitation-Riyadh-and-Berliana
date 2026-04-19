@@ -93,7 +93,7 @@ export default function Event() {
             number="2"
             title="Resepsi"
             date="Senin, 01 Juni 2026"
-            time="10.30 WIB – 13.00 WIB"
+            time="11.30 WIB – 14.00 WIB"
             location="Gedung VEDC Malang - Aula serbaguna"
             address="Jl. Teluk Mandar, Arjosari, Malang"
             mapsUrl={mapsUrl}

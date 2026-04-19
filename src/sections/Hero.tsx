@@ -76,7 +76,7 @@ export default function Hero() {
             transition={{ duration: 1.5 }}
             className="w-full h-full object-cover"
           >
-            <source src="/video_final.mp4" type="video/mp4" />
+            <source src="/final_video.mp4" type="video/mp4" />
           </motion.video>
         </div>
 
@@ -117,7 +117,7 @@ export default function Hero() {
 
           <motion.div variants={itemVariants} className="mb-8">
             <h1 className="font-latin text-[130px] text-[#800000] leading-none select-none">
-              Riyadh & Berliana
+              Berliana & Riyadh
             </h1>
           </motion.div>
 
