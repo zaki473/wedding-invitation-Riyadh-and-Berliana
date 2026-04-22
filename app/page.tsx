@@ -1,31 +1,14 @@
 "use client"
 import { Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { motion, Variants } from "framer-motion"
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { delayChildren: 0.5, staggerChildren: 0.3 }
-  }
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } 
-  }
-}
+import { motion } from "framer-motion"
 
 function GuestName() {
   const searchParams = useSearchParams()
   const namaTamu = searchParams.get("to") || "Tamu Undangan"
   
   return (
-    <h2 className="text-1xl md:text-5xl text-[#f5e6cc] font-[family-name:var(--font-playfair)] bold">
+    <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-[#f5e6cc] font-[family-name:var(--font-playfair)] font-bold text-center">
       {namaTamu}
     </h2>
   )
@@ -35,7 +18,6 @@ export default function OpeningPage() {
   const router = useRouter()
 
   return (
-    /* Perubahan: Tambahkan md:justify-center agar konten ngumpul di tengah pada desktop */
     <main className="relative h-[100dvh] w-full flex flex-col justify-between md:justify-center items-center overflow-hidden py-12 md:py-10 bg-[#0a0a0a]">
       
       {/* BACKGROUND & OVERLAY */}
@@ -71,71 +53,81 @@ export default function OpeningPage() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, delay: 0.2 }}
-        className="relative z-20 text-center md:mb-10" /* Tambah mb-10 di desktop */
+        className="relative z-20 text-center mt-4 md:mt-0 md:mb-10"
       >
-        <p className="uppercase tracking-[0.6em] text-[10px] md:text-base text-[#d6b98c] font-light">
+        <p className="uppercase tracking-[0.4em] sm:tracking-[0.6em] text-[10px] sm:text-xs md:text-base text-[#d6b98c] font-light">
           The Wedding Of
         </p>
       </motion.div>
 
       <div className="flex-grow md:hidden" /> 
 
-      {/* KONTEN UTAMA */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-20 text-center px-6 w-full max-w-4xl md:max-w-[90%] lg:max-w-7xl flex flex-col items-center"
-      >
-        {/* NAMA MEMPELAI: Font desktop dikecilkan sedikit agar muat di layar (dari 11rem ke 8rem) */}
-        <motion.div variants={itemVariants} className="mb-6 md:mb-8">
-          <h1 className="text-3xl md:text-[8rem] lg:text-[9rem] text-[#f5e6cc] font-[family-name:var(--font-playfair)] italic tracking-tight leading-none drop-shadow-2xl">
+      {/* KONTEN UTAMA - Container diubah menjadi div biasa, bukan motion.div yang melempar varian */}
+      <div className="relative z-20 text-center px-4 sm:px-6 w-full max-w-full md:max-w-[90%] lg:max-w-7xl flex flex-col items-center">
+        
+        {/* NAMA MEMPELAI */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-4 sm:mb-6 md:mb-8 w-full"
+        >
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8rem] xl:text-[9rem] text-[#f5e6cc] font-[family-name:var(--font-playfair)] italic tracking-tight leading-normal md:leading-none drop-shadow-2xl">
             Berliana & Riyadh
           </h1>
         </motion.div>
 
         {/* TANGGAL */}
-        <motion.div variants={itemVariants} className="flex items-center justify-center gap-4 md:gap-16 mb-10 md:mb-12">
-          <div className="hidden md:block w-32 h-[1px] bg-gradient-to-r from-transparent to-[#d6b98c]/50" />
-          <p className="text-xs md:text-2xl text-[#e6d3b3] font-light tracking-[0.6em]">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center justify-center gap-3 sm:gap-4 md:gap-16 mb-8 md:mb-12 w-full"
+        >
+          <div className="hidden md:block w-20 lg:w-32 h-[1px] bg-gradient-to-r from-transparent to-[#d6b98c]/50" />
+          <p className="text-xs sm:text-sm md:text-xl lg:text-2xl text-[#e6d3b3] font-light tracking-[0.4em] sm:tracking-[0.6em]">
             01 . 06 . 2026
           </p>
-          <div className="hidden md:block w-32 h-[1px] bg-gradient-to-l from-transparent to-[#d6b98c]/50" />
+          <div className="hidden md:block w-20 lg:w-32 h-[1px] bg-gradient-to-l from-transparent to-[#d6b98c]/50" />
         </motion.div>
 
         {/* BAGIAN NAMA TAMU */}
         <motion.div 
-          variants={itemVariants}
-          className="mb-8 md:mb-12 flex flex-col items-center w-full"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8 md:mb-12 flex flex-col items-center w-full max-w-[280px] sm:max-w-sm md:max-w-2xl"
         >
-          <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#d6b98c]/80 mb-3 md:mb-5 font-light">
+          <span className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#d6b98c]/80 mb-2 md:mb-5 font-light text-center">
             Kepada Yth. Bapak/Ibu/Saudara/i
           </span>
           
-          <div className="px-6 py-2 md:px-20 md:py-6 border-x border-[#d6b98c]/20 bg-black/10 backdrop-blur-[4px] relative group">
+          <div className="w-full px-4 py-3 sm:px-6 sm:py-4 md:px-20 md:py-6 border-x border-[#d6b98c]/20 bg-black/10 backdrop-blur-[4px] relative group flex justify-center items-center min-h-[60px] md:min-h-[100px]">
              <div className="hidden md:block absolute top-0 left-0 w-4 h-4 border-t border-l border-[#d6b98c]/40" />
              <div className="hidden md:block absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#d6b98c]/40" />
              
-             <Suspense fallback={<p className="text-[#f5e6cc]">Memuat Nama...</p>}>
+             <Suspense fallback={<p className="text-[#f5e6cc] text-sm md:text-base">Memuat Nama...</p>}>
                 <GuestName />
              </Suspense>
           </div>
         </motion.div>
 
-        {/* TOMBOL BUKA: Sekarang pasti muncul karena margin diatas sudah dikurangi */}
+        {/* TOMBOL BUKA */}
         <motion.button
-          variants={itemVariants}
-          whileHover={{ scale: 1.05, backgroundColor: "rgba(214, 185, 140, 0.1)", letterSpacing: "0.5em" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ scale: 1.05, backgroundColor: "rgba(214, 185, 140, 0.1)", letterSpacing: "0.3em" }}
           whileTap={{ scale: 0.98 }}
           onClick={() => router.push("/home")}
-          className="px-7 py-3 md:px-28 md:py-5 bg-transparent border border-[#d6b98c]/40 text-[#d6b98c] rounded-full transition-all duration-700 tracking-[0.2em] md:tracking-[0.4em] uppercase text-[10px] md:text-sm backdrop-blur-md shadow-xl"
+          className="px-6 py-3 sm:px-8 sm:py-3 md:px-24 md:py-5 lg:px-28 bg-transparent border border-[#d6b98c]/40 text-[#d6b98c] rounded-full transition-all duration-700 tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.4em] uppercase text-[10px] sm:text-xs md:text-sm backdrop-blur-md shadow-xl"
         >
           Buka Undangan
         </motion.button>
-      </motion.div>
+      </div>
 
       {/* FRAME BORDER TIPIS */}
-      <div className="absolute inset-4 md:inset-10 border border-[#d6b98c]/10 pointer-events-none z-10" />
+      <div className="absolute inset-3 sm:inset-4 md:inset-10 border border-[#d6b98c]/10 pointer-events-none z-10" />
     </main>
   )
 }
