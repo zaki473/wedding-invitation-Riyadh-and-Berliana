@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "Wedding Invitation",
     images: [
       {
-        url: "https://wedding-invitation-riyadh-and-berli-six.vercel.app/depanbiru.jpeg",
+        url: "https://wedding-invitation-riyadh-and-berli-six.vercel.app/kolase-tengah.webp",
         width: 1200,
         height: 630,
       },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     images: [
-      "https://wedding-invitation-riyadh-and-berli-six.vercel.app/depanbiru.jpeg",
+      "https://wedding-invitation-riyadh-and-berli-six.vercel.app/kolase-tengah.webp",
     ],
   },
 };

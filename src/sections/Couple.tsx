@@ -82,7 +82,7 @@ export default function Couple() {
 
               <p className="font-serif text-[#b68d40] text-sm mb-4 italic tracking-widest uppercase">Mempelai Wanita</p>
               <h3 className="text-3xl font-serif text-[#800000] mt-3 mb-4 tracking-tight" style={{ fontFamily: "'Great Vibes', cursive" }}>
-                Berliana Radhini I
+                Berliana Radhini Isnindiafi
               </h3>
               <div className="h-[1px] w-12 bg-[#b68d40]/30 mx-auto mb-2" />
               <div className="text-[13px] text-[#7a5c3c] leading-relaxed">
