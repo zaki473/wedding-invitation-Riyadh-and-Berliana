@@ -19,6 +19,7 @@ const playfair = Playfair_Display({
   style: ["normal", "italic"],
 });
 
+
 // Font script (estetik)
 const greatVibes = Great_Vibes({
   variable: "--font-great-vibes",

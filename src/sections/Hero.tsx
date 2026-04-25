@@ -76,7 +76,7 @@ export default function Hero() {
             transition={{ duration: 1.5 }}
             className="w-full h-full object-cover"
           >
-            <source src="https://ik.imagekit.io/p27ub3udc/undangan/final_video%20(1).mp4" type="video/mp4" />
+            <source src="https://ik.imagekit.io/p27ub3udc/undangan/last_3.mp4" type="video/mp4" />
           </motion.video>
         </div>
 

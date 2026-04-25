@@ -72,7 +72,9 @@ export default function ThankYou() {
               Keluarga
             </p>
             <h4 className="text-sm md:text-xl font-medium tracking-wide leading-snug">
-              Manfa Ludfi & Wiwit Ariana
+              Manfa Ludfi 
+              <br></br>& 
+              <br></br> Wiwit Ariana
             </h4>
           </div>
 
@@ -82,7 +84,9 @@ export default function ThankYou() {
               Keluarga
             </p>
             <h4 className="text-sm md:text-xl font-medium tracking-wide leading-snug">
-              Suparyono & Nurlindah
+              Suparyono 
+              <br></br>& 
+              <br></br>Nurlindah
             </h4>
           </div>
         </motion.div>

@@ -72,7 +72,7 @@ export default function OpeningPage() {
           transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-4 sm:mb-6 md:mb-8 w-full"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8rem] xl:text-[9rem] text-[#f5e6cc] font-[family-name:var(--font-playfair)] italic tracking-tight leading-normal md:leading-none drop-shadow-2xl">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8rem] xl:text-[9rem] text-[#f5e6cc] font-[family-name:var(--font-great-vibes)] italic tracking-tight leading-normal md:leading-none drop-shadow-2xl">
             Berliana & Riyadh
           </h1>
         </motion.div>
