@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display, Great_Vibes } from "next/font/google";
 import "@/app/globals.css";
 
-const geistSans = Geist({
+const geistSans = Geist({ 
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
@@ -12,14 +12,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Font Serif untuk kesan mewah (seperti majalah Vogue)
+// Font Serif (elegan)
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   style: ["normal", "italic"],
 });
 
-// Font Latin/Sambung untuk estetika
+// Font script (estetik)
 const greatVibes = Great_Vibes({
   variable: "--font-great-vibes",
   subsets: ["latin"],
@@ -29,15 +29,37 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: "Wedding Invitation | Muhammad Riyadh & Berliana Radhini",
   description: "The Wedding of Riyadh & Berliana",
+
+  openGraph: {
+    title: "Wedding Invitation | Muhammad Riyadh & Berliana Radhini",
+    description: "The Wedding of Riyadh & Berliana",
+    url: "https://wedding-invitation-riyadh-and-berli-six.vercel.app",
+    siteName: "Wedding Invitation",
+    images: [
+      {
+        url: "https://wedding-invitation-riyadh-and-berli-six.vercel.app/depanbiru.jpeg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://wedding-invitation-riyadh-and-berli-six.vercel.app/depanbiru.jpeg",
+    ],
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body
         className={`
           ${geistSans.variable} 
