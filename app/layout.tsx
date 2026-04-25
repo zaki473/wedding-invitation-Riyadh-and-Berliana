@@ -27,12 +27,12 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Wedding Invitation | Muhammad Riyadh & Berliana Radhini",
-  description: "The Wedding of Riyadh & Berliana",
+  title: "Wedding Invitation | Berliana Radhini & Muhammad Riyadh",
+  description: "The Wedding of Berliana & Riyadh",
 
   openGraph: {
-    title: "Wedding Invitation | Muhammad Riyadh & Berliana Radhini",
-    description: "The Wedding of Riyadh & Berliana",
+    title: "Wedding Invitation |  Berliana Radhini & Muhammad Riyadh",
+    description: "The Wedding of Berliana & Riyadh",
     url: "https://wedding-invitation-riyadh-and-berli-six.vercel.app",
     siteName: "Wedding Invitation",
     images: [
