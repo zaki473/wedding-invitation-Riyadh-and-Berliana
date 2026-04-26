@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display, Great_Vibes } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Playfair_Display,
+  Great_Vibes,
+} from "next/font/google";
 import "@/app/globals.css";
 
-const geistSans = Geist({ 
+const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
@@ -18,7 +23,6 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   style: ["normal", "italic"],
 });
-
 
 // Font script (estetik)
 const greatVibes = Great_Vibes({
@@ -41,6 +45,8 @@ export const metadata: Metadata = {
         url: "https://wedding-invitation-riyadh-and-berli-six.vercel.app/kolase-tengah.webp",
         width: 1200,
         height: 630,
+        alt: "Undangan Pernikahan Berli & Riyadh", // Tambahkan ini
+        type: "image/webp", // Tambahkan ini agar browser mobile yakin itu gambar
       },
     ],
     type: "website",
