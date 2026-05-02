@@ -32,31 +32,27 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://wedding-invitation-riyadh-and-berli-six.vercel.app'),
   title: "Wedding Invitation | Berliana Radhini & Muhammad Riyadh",
   description: "The Wedding of Berliana & Riyadh",
-
   openGraph: {
-    title: "Wedding Invitation |  Berliana Radhini & Muhammad Riyadh",
+    title: "Wedding Invitation | Berliana Radhini & Muhammad Riyadh",
     description: "The Wedding of Berliana & Riyadh",
-    url: "https://wedding-invitation-riyadh-and-berli-six.vercel.app",
+    url: "/",
     siteName: "Wedding Invitation",
     images: [
       {
-        url: "https://wedding-invitation-riyadh-and-berli-six.vercel.app/kolase-tengah.webp",
+        url: "/kolase-tengah_1.png", // Disarankan pakai .jpg
         width: 1200,
         height: 630,
-        alt: "Undangan Pernikahan Berli & Riyadh", // Tambahkan ini
-        type: "image/webp", // Tambahkan ini agar browser mobile yakin itu gambar
+        alt: "Undangan Pernikahan Berli & Riyadh",
       },
     ],
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
-    images: [
-      "https://wedding-invitation-riyadh-and-berli-six.vercel.app/kolase-tengah.webp",
-    ],
+    images: ["/kolase-tengah_1.png"],
   },
 };
 
