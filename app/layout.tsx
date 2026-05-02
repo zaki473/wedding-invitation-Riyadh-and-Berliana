@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: "Wedding Invitation",
     images: [
       {
-        url: "/kolase-tengah_12.jpg", // Pakai .jpg yang baru
+        url: "/horizontal1.jpeg", // Menggunakan gambar yang ukurannya optimal untuk WhatsApp (sekitar 89KB)
         width: 1200,
         height: 630,
         alt: "Undangan Pernikahan Berli & Riyadh",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/kolase-tengah_12.jpg"],
+    images: ["/horizontal1.jpeg"],
   },
 };
 
